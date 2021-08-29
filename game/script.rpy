@@ -34,12 +34,19 @@ label start:
             jump choose_something
     label ending:
         if is_click_all_choices == True:
-            e "Finally, we went to Washington."
-            e "We also visited the whitehouse."
-            "Good Ending."
+            jump good_ending
         else:
-            show eileen concerned
-            with dissolve
-            e "I want to visit all places."
-            "Bad Ending."
+            jump bad_ending
+
+label good_ending:
+    e "Finally, we went to Washington."
+    e "We also visited the whitehouse."
+    "Good Ending."
+    return
+
+label bad_ending:
+    show eileen concerned
+    with dissolve
+    e "I want to visit all places."
+    "Bad Ending."
     return
